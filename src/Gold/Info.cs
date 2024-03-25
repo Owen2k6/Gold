@@ -3,26 +3,19 @@ using IL2CPU.API.Attribs;
 
 namespace Gold;
 
-public class Info
+public static class Info
 {
-    [ManifestResourceStream(ResourceName = "GoGL.Resources.logo.bmp")]
-    static byte[] GoldLogoRaw;
+    #region Fields
 
-    public Canvas GoldLogo;
+    #pragma warning disable CS8604
 
-    public String getVersion()
-    {
-        return "0.0.1";
-    }
+    [ManifestResourceStream(ResourceName = "Gold.Resources.Gold.bmp")] static byte[] _rawLogo;
+    public static Canvas Logo = Image.FromBitmap(_rawLogo, false);
 
-    public String getApiVersion()
-    {
-        return "1.3";
-    }
+    #pragma warning restore CS8604
 
-    public Canvas getLogo()
-    {
-        GoldLogo = Image.FromBitmap(GoldLogoRaw, false);
-        return GoldLogo;
-    }
+    public const string Version = "0.0.1";
+    public const string ApiVersion = "1.1.1";
+
+    #endregion
 }

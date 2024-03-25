@@ -19,6 +19,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Resources\Gold.bmp" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\Gold.bmp" />
+    </ItemGroup>
+
+    <ItemGroup>
 		  <None Include="..\..\LICENSE">
 			  <Pack>True</Pack>
 			  <PackagePath>\</PackagePath>
