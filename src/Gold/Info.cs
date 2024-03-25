@@ -10,17 +10,17 @@ public class Info
 
     public Canvas GoldLogo;
 
-    public String getVersion()
+    public String GetVersion()
     {
         return "0.0.1";
     }
 
-    public String getApiVersion()
+    public String GetApiVersion()
     {
         return "1.3";
     }
 
-    public Canvas getLogo()
+    public Canvas GetLogo()
     {
         GoldLogo = Image.FromBitmap(GoldLogoRaw, false);
         return GoldLogo;
