@@ -102,14 +102,14 @@ public abstract class Display : Canvas
 		return _FPS;
 	}
 
-	#endregion
+    #endregion
 
-	#region Fields
+    #region Fields
 
-	/// <summary>
-	/// The internal frame counter, used for FPS calculation.
-	/// </summary>
-	public uint _Frames;
+    /// <summary>
+    /// The internal frame counter, used for FPS calculation.
+    /// </summary>
+    internal uint _Frames;
 
 	/// <summary>
 	/// The internal FPS value, returned from <see cref="GetFPS()"/>.
