@@ -359,7 +359,7 @@ public unsafe class Canvas
     /// <param name="Color">The <see cref="Color"/> object to draw with.</param>
     public void DrawRectangle(int X, int Y, ushort Width, ushort Height, ushort Radius, Color Color)
     {
-        Width--;  // Rectangles for some reason are 1px larger
+        Width--; // Rectangles for some reason are 1px larger
         Height--; // than they should be, this fixes that.
 
         // Draw circles to add curvature if needed.
@@ -900,8 +900,10 @@ public unsafe class Canvas
 
     #region Text
 
-    public void DrawGlyph(int X, int Y, Glyph Glyph, Color Color, bool Shadow = false) {
-        if (Glyph.Points.Count == 0) {
+    public void DrawGlyph(int X, int Y, Glyph Glyph, Color Color, bool Shadow = false)
+    {
+        if (Glyph.Points.Count == 0)
+        {
             // ACF
 
             // Draw all pixels.
@@ -944,7 +946,8 @@ public unsafe class Canvas
                 }
             }
         }
-        else {
+        else
+        {
             // Draw all pixels.
             for (int P = 0; P < Glyph.Points.Count; P++)
             {
@@ -952,7 +955,10 @@ public unsafe class Canvas
                 this[X + Glyph.Points[P].X, Y + Glyph.Points[P].Y] = Color;
 
                 // Draw shadow.
-                if (Shadow) { this[X + Glyph.Points[P].X + 1, Y + Glyph.Points[P].Y + 1] = Color.Black; }
+                if (Shadow)
+                {
+                    this[X + Glyph.Points[P].X + 1, Y + Glyph.Points[P].Y + 1] = Color.Black;
+                }
             }
         }
     }
@@ -1085,7 +1091,8 @@ public unsafe class Canvas
     /// <param name="Color">The <see cref="Color"/> object to draw with.</param>
     /// <param name="Center">Option to center the text at X and Y.</param>
     /// <param name="Shadow">Option to add a shadow to the text.</param>
-    public void DrawString(int X, int Y, string Text, BtfFontFace Font, Color Color, bool Center = false, bool Shadow = false)
+    public void DrawString(int X, int Y, string Text, BtfFontFace Font, Color Color, bool Center = false,
+        bool Shadow = false)
     {
         // Basic null check.
         if (string.IsNullOrEmpty(Text))
@@ -1154,7 +1161,11 @@ public unsafe class Canvas
                     this[BX[i] + Temp.Points[P].X - (I * -Font.SpacingModifier()), BY[i] + Temp.Points[P].Y] = Color;
 
                     // Draw shadow.
-                    if (Shadow) { this[BX[i] + Temp.Points[P].X + 1 - (I * -Font.SpacingModifier()), BY[i] + Temp.Points[P].Y + 1] = Color.Black; }
+                    if (Shadow)
+                    {
+                        this[BX[i] + Temp.Points[P].X + 1 - (I * -Font.SpacingModifier()),
+                            BY[i] + Temp.Points[P].Y + 1] = Color.Black;
+                    }
                 }
 
                 // Offset the X position by the glyph's length.
@@ -1173,10 +1184,12 @@ public unsafe class Canvas
     /// <param name="Color">The <see cref="Color"/> object to draw with.</param>
     /// <param name="Center">Option to center the text at X and Y.</param>
     /// <param name="Shadow">Option to add a shadow to the text.</param>
-    public void DrawString(int X, int Y, string Text, FontFace Font, Color Color, bool Center = false, bool Shadow = false)
+    public void DrawString(int X, int Y, string Text, FontFace Font, Color Color, bool Center = false,
+        bool Shadow = false)
     {
         if (Font.GetType() == typeof(AcfFontFace)) DrawString(X, Y, Text, (AcfFontFace)Font, Color, Center);
-        else if (Font.GetType() == typeof(BtfFontFace)) DrawString(X, Y, Text, (BtfFontFace)Font, Color, Center, Shadow);
+        else if (Font.GetType() == typeof(BtfFontFace))
+            DrawString(X, Y, Text, (BtfFontFace)Font, Color, Center, Shadow);
         else throw new NotImplementedException("Unsupported font type!");
     }
 

@@ -189,7 +189,8 @@ public class AcfFontFace : FontFace
         return _glyphs[c];
     }
 
-    public override ushort MeasureString(string s) {
+    public override ushort MeasureString(string s)
+    {
         ushort returnVal = 0;
 
         for (int i = 0; i < s.Length; i++) returnVal = (ushort)(returnVal + (GetGlyph(s[i])!.Width + 2));
