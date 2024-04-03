@@ -245,7 +245,7 @@ public unsafe class SVGAIICanvas : Display
 		WriteToFifo(Height);
 		WaitForFifo();
 
-		_Frames++;
+		Frames++;
 	}
 
 	public override void Update(bool IncreaseFPSCounter)
@@ -259,7 +259,7 @@ public unsafe class SVGAIICanvas : Display
 		WriteToFifo(Height);
 		WaitForFifo();
 
-		if (IncreaseFPSCounter) _Frames++;
+		if (IncreaseFPSCounter) Frames++;
 	}
 
 	#endregion

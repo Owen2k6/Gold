@@ -126,7 +126,7 @@ public unsafe static class Image
 
         // Read the pixel data.
         Reader.BaseStream.Position = PixelTableOffset;
-        byte[] Pixel = new byte[4]; //All must have the same size
+        byte[] Pixel = new byte[4]; // All must have the same size
 
         // Loop over each pixel.
         for (int Y = 0; Y < Temp.Height; Y++)

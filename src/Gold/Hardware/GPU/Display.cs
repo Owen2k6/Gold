@@ -21,7 +21,7 @@ public abstract class Display : Canvas
 	internal Display(ushort Width, ushort Height) : base(Width, Height)
 	{
 		// Setup the FPS counter timer.
-		Timer T = new((_) => { _FPS = _Frames; _Frames = 0; }, null, 1000, 0);
+		Timer T = new((_) => { _FPS = Frames; Frames = 0; }, null, 1000, 0);
 
 		// Set up the mouse manager.
 		MouseManager.ScreenHeight = Height;
@@ -107,9 +107,9 @@ public abstract class Display : Canvas
     #region Fields
 
     /// <summary>
-    /// The internal frame counter, used for FPS calculation.
+    /// The frame counter, used for FPS calculation.
     /// </summary>
-    internal uint _Frames;
+    public uint Frames;
 
 	/// <summary>
 	/// The internal FPS value, returned from <see cref="GetFPS()"/>.

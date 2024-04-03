@@ -847,7 +847,7 @@ public unsafe class Canvas
             int CanvasY = Y + IY;
 
             // Skip if out of bounds.
-            if (IY < 0 || IY >= Image.Height || CanvasY < 0 || CanvasY >= this.Height)
+            if (IY < 0 || IY >= Image.Height || CanvasY < 0 || CanvasY >= Height)
             {
                 continue;
             }
@@ -857,15 +857,15 @@ public unsafe class Canvas
                 int CanvasX = X + IX;
 
                 // Skip if out of bounds.
-                if (IX < 0 || IX >= Image.Width || CanvasX < 0 || CanvasX >= this.Width)
+                if (IX < 0 || IX >= Image.Width || CanvasX < 0 || CanvasX >= Width)
                 {
                     continue;
                 }
 
-                int CanvasIndex = (CanvasY * this.Width) + CanvasX;
+                int CanvasIndex = (CanvasY * Width) + CanvasX;
 
                 // Retrieve background and foreground colors.
-                uint BackgroundARGB = this.Internal[CanvasIndex];
+                uint BackgroundARGB = Internal[CanvasIndex];
                 uint ForegroundARGB = Image.Internal[(IY * Image.Width) + IX];
 
                 unchecked
@@ -890,7 +890,7 @@ public unsafe class Canvas
                     // Repack channels.
                     uint Color = 0xFF000000 | ((uint)R << 16) | ((uint)G << 8) | B;
 
-                    this.Internal[CanvasIndex] = Color;
+                    Internal[CanvasIndex] = Color;
                 }
             }
         }
