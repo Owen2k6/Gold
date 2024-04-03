@@ -14,8 +14,8 @@ public static class Info
 
     #pragma warning restore CS8604
 
-    public const string Version = "0.0.1";
-    public const string ApiVersion = "1.1.1";
+    public const string Version = "0.0.1"; //The version of GOLD.
+    public const string ApiVersion = "1.4"; //The PrismAPI version which GOLD is based off.
 
     #endregion
 }

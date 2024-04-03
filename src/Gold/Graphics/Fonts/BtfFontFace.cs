@@ -11,7 +11,7 @@
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU General Public License along
  *  with this program; if not, write to the Free Software Foundation, Inc.,
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -123,7 +123,8 @@ public class BtfFontFace : FontFace
         return _glyphs[c - 32];
     }
 
-    public override ushort MeasureString(string s) {
+    public override ushort MeasureString(string s)
+    {
         ushort returnVal = 0;
 
         for (int i = 0; i < s.Length; i++) returnVal = (ushort)(returnVal + (GetGlyph(s[i])!.Width + 2));
@@ -131,12 +132,16 @@ public class BtfFontFace : FontFace
         return (ushort)(returnVal + (s.Length * SpacingModifier()));
     }
 
-    public override int SpacingModifier() { return _spacingModifier; }
+    public override int SpacingModifier()
+    {
+        return _spacingModifier;
+    }
 
     /// <summary>
-	/// The standard charset of all fonts.
-	/// </summary>
-    public const string DefaultCharset = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+    /// The standard charset of all fonts.
+    /// </summary>
+    public const string DefaultCharset =
+        "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
     /// <summary>
     /// The binary data of the BTF font face.
@@ -159,7 +164,7 @@ public class BtfFontFace : FontFace
     private readonly Glyph[] _glyphs = new Glyph[96];
 
     /// <summary>
-	/// Character spacing offset.
-	/// </summary>
+    /// Character spacing offset.
+    /// </summary>
     private int _spacingModifier = 0;
 }
