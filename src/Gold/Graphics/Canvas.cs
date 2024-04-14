@@ -1,7 +1,6 @@
-﻿using Cosmos.Core;
-using Cosmos.System.Graphics.Fonts;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.InteropServices;
+using Cosmos.Core;
 using Gold.Graphics.Fonts;
 using Gold.Graphics.Rasterizer;
 
@@ -837,7 +836,6 @@ public unsafe class Canvas
                 Destination += this.Width;
                 Source += Image.Width;
             }
-
             return;
         }
 
@@ -904,9 +902,6 @@ public unsafe class Canvas
     {
         if (Glyph.Points.Count == 0)
         {
-            // ACF
-
-            // Draw all pixels.
             // Draw the ACF glyph.
             for (int yy = 0; yy < Glyph.Height; yy++)
             {
@@ -948,7 +943,7 @@ public unsafe class Canvas
         }
         else
         {
-            // Draw all pixels.
+            // Draw the BTF glyph.
             for (int P = 0; P < Glyph.Points.Count; P++)
             {
                 // Draw actual pixel.
@@ -1091,8 +1086,7 @@ public unsafe class Canvas
     /// <param name="Color">The <see cref="Color"/> object to draw with.</param>
     /// <param name="Center">Option to center the text at X and Y.</param>
     /// <param name="Shadow">Option to add a shadow to the text.</param>
-    public void DrawString(int X, int Y, string Text, BtfFontFace Font, Color Color, bool Center = false,
-        bool Shadow = false)
+    public void DrawString(int X, int Y, string Text, BtfFontFace Font, Color Color, bool Center = false, bool Shadow = false)
     {
         // Basic null check.
         if (string.IsNullOrEmpty(Text))
@@ -1261,6 +1255,11 @@ public unsafe class Canvas
     #region Fields
 
     /// <summary>
+    /// The graphics frame buffer, with a size matching <see cref="Size"/>.
+    /// </summary>
+    public uint* Internal;
+
+    /// <summary>
     /// The internal Height value cache.
     /// </summary>
     internal ushort _Height;
@@ -1269,11 +1268,6 @@ public unsafe class Canvas
     /// The internal Width value cache.
     /// </summary>
     internal ushort _Width;
-
-    /// <summary>
-    /// The graphics frame buffer, with a size matching <see cref="Size"/>.
-    /// </summary>
-    public uint* Internal;
 
     #endregion
 }
